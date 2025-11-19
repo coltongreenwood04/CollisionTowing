@@ -19,9 +19,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between gap-4">
+        <div className="flex h-20 items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-3 hover-elevate rounded-md px-2 py-1 -ml-2" data-testid="link-home">
-            <img src={logoUrl} alt="Collision Towing Logo" className="h-12 w-auto object-contain" />
+            <img src={logoUrl} alt="Collision Towing Logo" className="h-16 w-auto object-contain" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
