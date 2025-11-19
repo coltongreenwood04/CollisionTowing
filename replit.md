@@ -6,7 +6,9 @@ A modern, conversion-optimized website for Collision Towing, a 24/7 towing and r
 
 The application is built as a full-stack web platform featuring a React frontend with shadcn/ui components and an Express backend, designed to maximize lead generation through quote requests, service scheduling, direct phone contact (801-946-6531), and email communication (collisiontow2018@gmail.com).
 
-The site emphasizes mobile-first emergency response with prominent call-to-action buttons, professional trust-building elements, and comprehensive service information across 9 counties (Weber, Morgan, Salt Lake, Davis, Box Elder, Utah, Tooele, Cache, and Summit). The company is on rotation for Utah Highway Patrol (Salt Lake & Weber counties) and Unified Police Department (Midvale). Key features include vehicle sales listings, customer testimonials, service galleries, and multiple contact methods.
+The site emphasizes mobile-first emergency response with prominent call-to-action buttons, professional trust-building elements, and comprehensive service information across 9 counties (Weber, Morgan, Salt Lake, Davis, Box Elder, Utah, Tooele, Cache, and Summit). The company is on rotation for Utah Highway Patrol (Salt Lake & Weber counties) and Unified Police Department (Midvale).
+
+The company specializes in handling specialty vehicles including exotic cars, electric vehicles (EVs), and lowered vehicles using modern flatbed tow trucks with specialized equipment. Key features include vehicle sales listings, customer testimonials, service galleries with fleet photos, and multiple contact methods.
 
 ## User Preferences
 

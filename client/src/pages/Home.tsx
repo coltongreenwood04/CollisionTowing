@@ -11,7 +11,7 @@ export default function Home() {
     {
       icon: Truck,
       title: "Towing Services",
-      description: "24/7 towing for light and medium duty vehicles. Fast, professional service.",
+      description: "24/7 flatbed towing including exotic cars, electric vehicles, and lowered vehicles.",
       price: "$75 service fee"
     },
     {

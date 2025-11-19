@@ -1,16 +1,17 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QuoteButton } from "@/components/QuoteButton";
-import { Truck, Wrench, Shield, Battery, Key, Fuel, Car, AlertCircle, Clock } from "lucide-react";
+import { Truck, Wrench, Shield, Battery, Key, Fuel, Car, AlertCircle, Clock, Zap, Settings, Trophy } from "lucide-react";
 
 export default function Services() {
   const services = [
     {
       icon: Truck,
       title: "Towing Services",
-      description: "24/7 towing for light and medium duty vehicles. Fast, professional service to get your vehicle where it needs to go.",
+      description: "24/7 flatbed towing for all vehicle types including exotic cars, electric vehicles, and lowered vehicles. Professional service to safely transport your vehicle.",
       features: [
         "Service fee: $75.00 (all services)",
         "Towed miles: $5.00/mile",
+        "Exotic cars • Electric cars • Lowered vehicles",
         "En route: $2.00/mile (if pickup >30 min away)",
         "Deadhead: $1.00/mile (out of area drop-off)"
       ],
@@ -142,6 +143,42 @@ export default function Services() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="mb-12 bg-card rounded-lg p-8 border-2 border-primary/20">
+          <h2 className="text-2xl font-bold mb-6 text-center">Specialty Vehicle Handling</h2>
+          <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Our modern flatbed tow trucks are equipped to safely transport specialty and high-value vehicles with professional care
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <Card className="p-6 text-center hover-elevate">
+              <div className="rounded-md bg-primary/10 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Trophy className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="font-bold mb-2">Exotic Cars</h3>
+              <p className="text-sm text-muted-foreground">
+                Safe flatbed transport for luxury and exotic vehicles
+              </p>
+            </Card>
+            <Card className="p-6 text-center hover-elevate">
+              <div className="rounded-md bg-primary/10 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Zap className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="font-bold mb-2">Electric Vehicles</h3>
+              <p className="text-sm text-muted-foreground">
+                Specialized handling for EVs and hybrid vehicles
+              </p>
+            </Card>
+            <Card className="p-6 text-center hover-elevate">
+              <div className="rounded-md bg-primary/10 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Settings className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="font-bold mb-2">Lowered Vehicles</h3>
+              <p className="text-sm text-muted-foreground">
+                Careful loading for modified and lowered cars
+              </p>
+            </Card>
+          </div>
         </div>
 
         <Card className="bg-primary text-primary-foreground">

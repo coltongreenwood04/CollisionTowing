@@ -8,6 +8,8 @@ import img3 from "@assets/IMG_5149_1763592564229.jpg";
 import img4 from "@assets/IMG_5332_1763592568261.jpg";
 import img5 from "@assets/IMG_5331_1763592571944.jpg";
 import img6 from "@assets/IMG_5152_1763592578262.jpg";
+import img7 from "@assets/IMG_4998_1763593992310.jpg";
+import img8 from "@assets/IMG_4992 (1)_1763594005083.jpg";
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -22,6 +24,16 @@ export default function Gallery() {
       src: img2,
       title: "Flatbed Towing Service",
       category: "Flatbed Towing"
+    },
+    {
+      src: img7,
+      title: "Professional Flatbed Truck - Outdoor",
+      category: "Equipment"
+    },
+    {
+      src: img8,
+      title: "Modern Flatbed Truck - Indoor Facility",
+      category: "Equipment"
     },
     {
       src: img3,
@@ -97,7 +109,7 @@ export default function Gallery() {
         <div className="mt-16 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6">Professional Equipment & Service</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Our fleet includes modern flatbed tow trucks, wheel-lift trucks, and specialized equipment to handle any towing or recovery situation safely and efficiently.
+            Our fleet includes modern flatbed tow trucks with specialized equipment to safely handle exotic cars, electric vehicles, lowered vehicles, and all standard towing or recovery situations.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <Card className="p-6 text-center">
