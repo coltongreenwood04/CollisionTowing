@@ -8,7 +8,7 @@ The application is built as a full-stack web platform featuring a React frontend
 
 The site emphasizes mobile-first emergency response with prominent call-to-action buttons, professional trust-building elements, and comprehensive service information across 9 counties (Weber, Morgan, Salt Lake, Davis, Box Elder, Utah, Tooele, Cache, and Summit). The company is on rotation for Utah Highway Patrol (Salt Lake & Weber counties) and Unified Police Department (Midvale).
 
-The company specializes in handling specialty vehicles including exotic cars, electric vehicles (EVs), and lowered vehicles using modern flatbed tow trucks with specialized equipment. Key features include vehicle sales listings, customer testimonials, service galleries with fleet photos, and multiple contact methods.
+The company specializes in handling specialty vehicles including exotic cars, electric vehicles (EVs), and lowered vehicles using modern flatbed tow trucks with specialized equipment. Key features include customer testimonials, service galleries with fleet photos, and multiple contact methods.
 
 ## User Preferences
 
@@ -41,9 +41,8 @@ Preferred communication style: Simple, everyday language.
 
 **Page Structure:**
 - Home: Hero section with emergency service CTA, service overview, trust badges
-- Services: Detailed service listings with features and pricing
-- Vehicles: Vehicle inventory for sale with inquiry forms
-- Gallery: Image showcase of equipment and work
+- Services: Detailed service listings with features and pricing, specialty vehicle handling section
+- Gallery: Image showcase of equipment and work (8 photos)
 - Reviews: Customer testimonials with star ratings
 - Contact: Multi-tab contact forms (general contact, quote requests, scheduling)
 

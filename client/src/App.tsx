@@ -11,7 +11,6 @@ import { Footer } from "@/components/Footer";
 import { MobileCallButton } from "@/components/MobileCallButton";
 import Home from "@/pages/Home";
 import Services from "@/pages/Services";
-import Vehicles from "@/pages/Vehicles";
 import Gallery from "@/pages/Gallery";
 import Reviews from "@/pages/Reviews";
 import Contact from "@/pages/Contact";
@@ -27,7 +26,6 @@ function Router() {
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/services" component={Services} />
-          <Route path="/vehicles" component={Vehicles} />
           <Route path="/gallery" component={Gallery} />
           <Route path="/reviews" component={Reviews} />
           <Route path="/contact" component={Contact} />

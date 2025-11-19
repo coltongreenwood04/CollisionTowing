@@ -22,9 +22,6 @@ export function Footer() {
               <Link href="/services" data-testid="link-footer-services">
                 <span className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Services</span>
               </Link>
-              <Link href="/vehicles" data-testid="link-footer-vehicles">
-                <span className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Vehicles for Sale</span>
-              </Link>
               <Link href="/gallery" data-testid="link-footer-gallery">
                 <span className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Gallery</span>
               </Link>
