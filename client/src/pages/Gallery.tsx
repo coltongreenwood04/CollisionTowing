@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogHeader } from "@/components/ui/dialog";
 import { useState } from "react";
 import img1 from "@assets/IMG_4997_1763592537277.jpg";
 import img2 from "@assets/IMG_4684_1763592546577.jpg";
@@ -78,13 +78,15 @@ export default function Gallery() {
                 </Card>
               </DialogTrigger>
               <DialogContent className="max-w-4xl">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold mb-4">{image.title}</DialogTitle>
+                </DialogHeader>
                 <img 
                   src={image.src} 
                   alt={image.title}
                   className="w-full h-auto rounded-md"
                 />
                 <div className="mt-4">
-                  <h3 className="font-bold text-xl mb-2">{image.title}</h3>
                   <Badge>{image.category}</Badge>
                 </div>
               </DialogContent>
