@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Phone, MapPin, Clock, Shield, Truck, Wrench, Star, FileText } from "lucide-react";
+import { Phone, MapPin, Clock, Shield, Truck, Wrench, Star, FileText, Mail } from "lucide-react";
 import { QuoteButton } from "@/components/QuoteButton";
 import { Link } from "wouter";
 import heroImageUrl from "@assets/IMG_4684_1763592546577.jpg";
@@ -173,6 +173,15 @@ export default function Home() {
                     <div className="font-semibold mb-1">Call Us</div>
                     <a href="tel:801-946-6531" className="text-lg text-primary hover:underline" data-testid="link-call-contact">
                       801-946-6531
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Mail className="h-5 w-5 text-primary mt-0.5" />
+                  <div>
+                    <div className="font-semibold mb-1">Email Us</div>
+                    <a href="mailto:collisiontow2018@gmail.com" className="text-sm text-primary hover:underline break-all" data-testid="link-email-contact">
+                      collisiontow2018@gmail.com
                     </a>
                   </div>
                 </div>

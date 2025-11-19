@@ -39,7 +39,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <Card className="hover-elevate">
             <CardContent className="p-6 text-center">
               <div className="rounded-md bg-primary/10 w-12 h-12 flex items-center justify-center mx-auto mb-4">
@@ -50,6 +50,19 @@ export default function Contact() {
                 801-946-6531
               </a>
               <p className="text-sm text-muted-foreground mt-2">24/7 Emergency Service</p>
+            </CardContent>
+          </Card>
+
+          <Card className="hover-elevate">
+            <CardContent className="p-6 text-center">
+              <div className="rounded-md bg-primary/10 w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                <Mail className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-semibold mb-2">Email</h3>
+              <a href="mailto:collisiontow2018@gmail.com" className="text-primary hover:underline text-sm font-medium break-all" data-testid="link-email-contact-card">
+                collisiontow2018@gmail.com
+              </a>
+              <p className="text-sm text-muted-foreground mt-2">We'll respond promptly</p>
             </CardContent>
           </Card>
 

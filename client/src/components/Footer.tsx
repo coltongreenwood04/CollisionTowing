@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Phone, MapPin, Clock } from "lucide-react";
+import { Phone, MapPin, Clock, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -45,6 +45,14 @@ export function Footer() {
                 <div>
                   <a href="tel:801-946-6531" className="text-sm font-medium hover:text-primary transition-colors" data-testid="link-footer-phone">
                     801-946-6531
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <Mail className="h-4 w-4 mt-0.5 text-primary" />
+                <div>
+                  <a href="mailto:collisiontow2018@gmail.com" className="text-sm font-medium hover:text-primary transition-colors" data-testid="link-footer-email">
+                    collisiontow2018@gmail.com
                   </a>
                 </div>
               </div>
