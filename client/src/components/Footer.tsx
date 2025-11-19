@@ -1,0 +1,83 @@
+import { Link } from "wouter";
+import { Phone, MapPin, Clock } from "lucide-react";
+
+export function Footer() {
+  return (
+    <footer className="bg-card border-t mt-auto">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <h3 className="font-bold text-lg mb-4">Collision Towing</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Professional towing and roadside assistance serving Murray and surrounding areas. Licensed, insured, and ready to help 24/7.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Yard #10557
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-lg mb-4">Quick Links</h3>
+            <div className="flex flex-col gap-2">
+              <Link href="/services" data-testid="link-footer-services">
+                <span className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Services</span>
+              </Link>
+              <Link href="/vehicles" data-testid="link-footer-vehicles">
+                <span className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Vehicles for Sale</span>
+              </Link>
+              <Link href="/gallery" data-testid="link-footer-gallery">
+                <span className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Gallery</span>
+              </Link>
+              <Link href="/reviews" data-testid="link-footer-reviews">
+                <span className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Reviews</span>
+              </Link>
+              <Link href="/contact" data-testid="link-footer-contact">
+                <span className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Contact</span>
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-lg mb-4">Contact Info</h3>
+            <div className="flex flex-col gap-3">
+              <div className="flex items-start gap-2">
+                <Phone className="h-4 w-4 mt-0.5 text-primary" />
+                <div>
+                  <a href="tel:801-946-9531" className="text-sm font-medium hover:text-primary transition-colors" data-testid="link-footer-phone">
+                    801-946-9531
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 mt-0.5 text-primary" />
+                <div className="text-sm text-muted-foreground">
+                  <div>5662 S. 300 W.</div>
+                  <div>Murray, UT 84107</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <Clock className="h-4 w-4 mt-0.5 text-primary" />
+                <div className="text-sm text-muted-foreground">
+                  <div>Monday - Friday</div>
+                  <div>8:00 AM - 5:00 PM</div>
+                  <div className="mt-1 font-medium text-foreground">24/7 Emergency Service</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-lg mb-4">Service Areas</h3>
+            <p className="text-sm text-muted-foreground">
+              Murray, West Jordan, South Jordan, Sandy, Midvale, Taylorsville, and surrounding Salt Lake County areas.
+            </p>
+          </div>
+        </div>
+
+        <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} Collision Towing. All rights reserved. Licensed & Insured.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
