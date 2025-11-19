@@ -10,21 +10,21 @@ export default function Home() {
   const services = [
     {
       icon: Truck,
-      title: "Emergency Towing",
-      description: "24/7 emergency towing service for all vehicle types. Fast response times.",
-      price: "Starting at $75"
+      title: "Towing Services",
+      description: "24/7 towing for light and medium duty vehicles. Fast, professional service.",
+      price: "$75 service fee"
     },
     {
       icon: Wrench,
       title: "Roadside Assistance",
       description: "Battery jumps, lockouts, tire changes, and fuel delivery.",
-      price: "Starting at $50"
+      price: "$75 service fee"
     },
     {
       icon: Shield,
       title: "Accident Recovery",
       description: "Professional accident scene management and vehicle recovery.",
-      price: "Call for quote"
+      price: "$75 service fee"
     },
   ];
 
@@ -55,13 +55,13 @@ export default function Home() {
             Fast, Reliable Towing
           </h1>
           <p className="text-xl sm:text-2xl mb-8 max-w-2xl mx-auto text-gray-100">
-            Professional towing and roadside assistance in Murray, UT and surrounding areas
+            Professional towing and roadside assistance serving Northern Utah
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="tel:801-946-9531" data-testid="link-call-hero">
+            <a href="tel:801-946-6531" data-testid="link-call-hero">
               <Button size="lg" className="gap-2 text-lg px-8 py-6 bg-primary/90 backdrop-blur-sm hover:bg-primary border-primary-border">
                 <Phone className="h-5 w-5" />
-                Call Now: 801-946-9531
+                Call Now: 801-946-6531
               </Button>
             </a>
             <Link href="/contact?tab=quote" data-testid="link-quote-hero">
@@ -171,18 +171,19 @@ export default function Home() {
                   <Phone className="h-5 w-5 text-primary mt-0.5" />
                   <div>
                     <div className="font-semibold mb-1">Call Us</div>
-                    <a href="tel:801-946-9531" className="text-lg text-primary hover:underline" data-testid="link-call-contact">
-                      801-946-9531
+                    <a href="tel:801-946-6531" className="text-lg text-primary hover:underline" data-testid="link-call-contact">
+                      801-946-6531
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-primary mt-0.5" />
                   <div>
-                    <div className="font-semibold mb-1">Visit Us</div>
+                    <div className="font-semibold mb-1">Locations</div>
                     <div className="text-muted-foreground">
-                      5662 S. 300 W.<br />
-                      Murray, UT 84107
+                      Main Office: Eden, UT<br />
+                      Central Office: West Jordan, UT<br />
+                      Storage Yards: Murray, West Jordan, Ogden
                     </div>
                   </div>
                 </div>
@@ -213,10 +214,10 @@ export default function Home() {
           <p className="text-xl mb-8 opacity-90">
             Call us immediately for fast, professional service
           </p>
-          <a href="tel:801-946-9531" data-testid="link-call-cta">
+          <a href="tel:801-946-6531" data-testid="link-call-cta">
             <Button size="lg" variant="outline" className="gap-2 text-lg px-8 py-6 bg-background text-foreground hover:bg-background/90 border-2">
               <Phone className="h-5 w-5" />
-              801-946-9531
+              801-946-6531
             </Button>
           </a>
         </div>

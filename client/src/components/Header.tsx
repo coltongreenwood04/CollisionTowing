@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Phone, Menu, X } from "lucide-react";
-import logoUrl from "@assets/IMG_4261_1763592540244.jpg";
+import logoUrl from "@assets/IMG_0829_1763594190440.jpeg";
 
 export function Header() {
   const [location] = useLocation();
@@ -22,11 +22,7 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-3 hover-elevate rounded-md px-2 py-1 -ml-2" data-testid="link-home">
-            <img src={logoUrl} alt="Collision Towing Logo" className="h-10 w-auto object-contain" />
-            <div className="flex flex-col">
-              <span className="font-bold text-lg leading-tight">Collision Towing</span>
-              <span className="text-xs text-muted-foreground hidden sm:block">24/7 Service</span>
-            </div>
+            <img src={logoUrl} alt="Collision Towing Logo" className="h-12 w-auto object-contain" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -43,13 +39,13 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <a href="tel:801-946-9531" className="hidden sm:block" data-testid="link-call-header">
+            <a href="tel:801-946-6531" className="hidden sm:block" data-testid="link-call-header">
               <Button variant="default" className="gap-2">
                 <Phone className="h-4 w-4" />
-                <span className="font-semibold">801-946-9531</span>
+                <span className="font-semibold">801-946-6531</span>
               </Button>
             </a>
-            <a href="tel:801-946-9531" className="sm:hidden" data-testid="link-call-header-mobile">
+            <a href="tel:801-946-6531" className="sm:hidden" data-testid="link-call-header-mobile">
               <Button variant="default" size="icon">
                 <Phone className="h-4 w-4" />
               </Button>

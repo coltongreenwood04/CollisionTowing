@@ -9,10 +9,10 @@ export function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-4">Collision Towing</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Professional towing and roadside assistance serving Murray and surrounding areas. Licensed, insured, and ready to help 24/7.
+              Professional towing and roadside assistance serving Northern Utah. Licensed, insured, and ready to help 24/7.
             </p>
             <p className="text-sm text-muted-foreground">
-              Yard #10557
+              Murray Yard #10557
             </p>
           </div>
 
@@ -43,16 +43,20 @@ export function Footer() {
               <div className="flex items-start gap-2">
                 <Phone className="h-4 w-4 mt-0.5 text-primary" />
                 <div>
-                  <a href="tel:801-946-9531" className="text-sm font-medium hover:text-primary transition-colors" data-testid="link-footer-phone">
-                    801-946-9531
+                  <a href="tel:801-946-6531" className="text-sm font-medium hover:text-primary transition-colors" data-testid="link-footer-phone">
+                    801-946-6531
                   </a>
                 </div>
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 text-primary" />
                 <div className="text-sm text-muted-foreground">
-                  <div>5662 S. 300 W.</div>
-                  <div>Murray, UT 84107</div>
+                  <div className="font-medium text-foreground">Main Office:</div>
+                  <div>Eden, Utah</div>
+                  <div className="mt-2 font-medium text-foreground">Central Offices:</div>
+                  <div>West Jordan • Ogden</div>
+                  <div className="mt-2 font-medium text-foreground">Storage Yards:</div>
+                  <div>Murray (#10557) • West Jordan • Ogden</div>
                 </div>
               </div>
               <div className="flex items-start gap-2">
@@ -68,8 +72,11 @@ export function Footer() {
 
           <div>
             <h3 className="font-bold text-lg mb-4">Service Areas</h3>
-            <p className="text-sm text-muted-foreground">
-              Murray, West Jordan, South Jordan, Sandy, Midvale, Taylorsville, and surrounding Salt Lake County areas.
+            <p className="text-sm text-muted-foreground mb-2">
+              Weber, Morgan, Salt Lake, Davis, Box Elder, Utah, Tooele, Cache, and Summit counties.
+            </p>
+            <p className="text-xs text-muted-foreground">
+              On rotation for Utah Highway Patrol (Salt Lake & Weber) and Unified Police Department (Midvale).
             </p>
           </div>
         </div>

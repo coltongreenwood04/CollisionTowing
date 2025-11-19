@@ -6,58 +6,98 @@ export default function Services() {
   const services = [
     {
       icon: Truck,
-      title: "Emergency Towing",
-      description: "24/7 emergency towing for cars, trucks, and SUVs. Fast response times to get you off the road quickly and safely.",
-      features: ["Flatbed towing", "Wheel lift towing", "Long distance towing", "Motorcycle towing"],
-      basePrice: "Starting at $75"
-    },
-    {
-      icon: Shield,
-      title: "Accident Recovery",
-      description: "Professional accident scene management and vehicle recovery. We work with insurance companies to make the process smooth.",
-      features: ["Scene management", "Multi-vehicle recovery", "Heavy-duty recovery", "Insurance coordination"],
-      basePrice: "Call for quote"
-    },
-    {
-      icon: Wrench,
-      title: "Roadside Assistance",
-      description: "Quick roadside help when you need it most. We'll get you back on the road or safely towed to a repair facility.",
-      features: ["Tire changes", "Battery jumps", "Lockout service", "Fuel delivery"],
-      basePrice: "Starting at $50"
+      title: "Towing Services",
+      description: "24/7 towing for light and medium duty vehicles. Fast, professional service to get your vehicle where it needs to go.",
+      features: [
+        "Service fee: $75.00 (all services)",
+        "Towed miles: $5.00/mile",
+        "En route: $2.00/mile (if pickup >30 min away)",
+        "Deadhead: $1.00/mile (out of area drop-off)"
+      ],
+      basePrice: "$75 service fee"
     },
     {
       icon: Battery,
-      title: "Jump Starts",
-      description: "Dead battery? We'll come to your location and get your vehicle started quickly.",
-      features: ["Fast response", "Professional service", "Battery testing", "Jump start service"],
-      basePrice: "$50"
+      title: "Jump Start",
+      description: "Dead battery? We'll come to your location and get your vehicle started quickly and safely.",
+      features: [
+        "Service fee: $75.00",
+        "Professional battery testing",
+        "Fast response times",
+        "En route: $2.00/mile (if >30 min away)"
+      ],
+      basePrice: "$75 service fee"
+    },
+    {
+      icon: Wrench,
+      title: "Spare Tire Service",
+      description: "Flat tire? We'll install your spare tire and get you back on the road safely.",
+      features: [
+        "Service fee: $75.00",
+        "Professional tire change",
+        "Safe installation",
+        "En route: $2.00/mile (if >30 min away)"
+      ],
+      basePrice: "$75 service fee"
     },
     {
       icon: Key,
       title: "Lockout Service",
-      description: "Locked out of your vehicle? Our team can safely unlock your car without damage.",
-      features: ["Non-damage entry", "All vehicle types", "Fast service", "Professional technicians"],
-      basePrice: "$60"
+      description: "Locked out of your vehicle? Our team can safely unlock your car without causing any damage.",
+      features: [
+        "Service fee: $75.00",
+        "Non-damage entry",
+        "All vehicle types",
+        "En route: $2.00/mile (if >30 min away)"
+      ],
+      basePrice: "$75 service fee"
+    },
+    {
+      icon: Shield,
+      title: "Winch Outs",
+      description: "Vehicle stuck or off-road? Professional winch-out and recovery services to get you back on solid ground.",
+      features: [
+        "Service fee: $75.00",
+        "Professional recovery",
+        "Safe extraction",
+        "En route: $2.00/mile (if >30 min away)"
+      ],
+      basePrice: "$75 service fee"
     },
     {
       icon: Fuel,
       title: "Fuel Delivery",
       description: "Run out of gas? We'll bring fuel directly to your location to get you moving again.",
-      features: ["Gasoline delivery", "Diesel delivery", "Quick response", "Convenient service"],
-      basePrice: "$65"
-    },
-    {
-      icon: Car,
-      title: "Vehicle Transport",
-      description: "Safe, reliable vehicle transportation for any distance. Perfect for vehicle purchases or relocations.",
-      features: ["Local transport", "Long distance", "Enclosed transport", "Door-to-door service"],
-      basePrice: "Call for quote"
+      features: [
+        "Service fee: $75.00 + fuel cost",
+        "Gasoline delivery",
+        "Diesel delivery",
+        "En route: $2.00/mile (if >30 min away)"
+      ],
+      basePrice: "$75 + fuel"
     },
     {
       icon: AlertCircle,
-      title: "Impound Services",
-      description: "Professional impound and storage services. Secure yard facility with 24/7 access coordination.",
-      features: ["Secure storage", "Yard #10557", "Vehicle release", "Insurance claims"],
+      title: "Police & Private Property Tows",
+      description: "State-mandated rates for police-initiated tows and private property violations.",
+      features: [
+        "Utah Highway Patrol (Salt Lake & Weber)",
+        "Unified Police Department (Midvale)",
+        "Private property enforcement",
+        "See state rate chart for details"
+      ],
+      basePrice: "State rates apply"
+    },
+    {
+      icon: Car,
+      title: "Impound & Storage",
+      description: "Secure vehicle storage with 24/7 access coordination at our Murray yard location.",
+      features: [
+        "Secure storage yards",
+        "Murray Yard #10557",
+        "Vehicle release coordination",
+        "Insurance claims assistance"
+      ],
       basePrice: "Call for quote"
     },
   ];
@@ -110,28 +150,55 @@ export default function Services() {
             <p className="text-lg mb-6 opacity-90">
               Call us for immediate assistance. We're available 24/7 for emergencies.
             </p>
-            <a href="tel:801-946-9531" className="inline-block" data-testid="link-call-services">
+            <a href="tel:801-946-6531" className="inline-block" data-testid="link-call-services">
               <span className="text-3xl font-bold hover:opacity-80 transition-opacity">
-                801-946-9531
+                801-946-6531
               </span>
             </a>
           </CardContent>
         </Card>
 
         <div className="mt-12 bg-card rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-6 text-center">Service Area</h2>
-          <p className="text-center text-muted-foreground mb-4">
-            We proudly serve Murray, UT and surrounding areas including:
+          <h2 className="text-2xl font-bold mb-6 text-center">Service Coverage Area</h2>
+          <p className="text-center text-muted-foreground mb-6">
+            We proudly serve Northern Utah with multiple office and yard locations:
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {["Murray", "West Jordan", "South Jordan", "Sandy", "Midvale", "Taylorsville", "Draper", "Riverton"].map((city, index) => (
-              <div key={index} className="text-center p-3 bg-accent rounded-md">
-                <span className="font-medium">{city}</span>
+          
+          <div className="max-w-4xl mx-auto mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <div className="text-center p-4 bg-accent rounded-md">
+                <div className="font-bold mb-1">Main Office</div>
+                <div className="text-sm text-muted-foreground">Eden, Utah</div>
               </div>
-            ))}
+              <div className="text-center p-4 bg-accent rounded-md">
+                <div className="font-bold mb-1">Central Office</div>
+                <div className="text-sm text-muted-foreground">West Jordan, Utah</div>
+              </div>
+              <div className="text-center p-4 bg-accent rounded-md">
+                <div className="font-bold mb-1">Ogden Office</div>
+                <div className="text-sm text-muted-foreground">Ogden, Utah</div>
+              </div>
+            </div>
+            
+            <div className="text-center mb-6">
+              <div className="font-semibold mb-2">Storage Yards</div>
+              <div className="text-sm text-muted-foreground">Murray (Yard #10557) • West Jordan • Ogden</div>
+            </div>
           </div>
+
+          <div className="border-t pt-6">
+            <h3 className="text-xl font-bold mb-4 text-center">Counties Served</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 max-w-4xl mx-auto">
+              {["Weber County", "Morgan County", "Salt Lake County", "Davis County", "Box Elder County", "Utah County", "Tooele County", "Cache County", "Summit County"].map((county, index) => (
+                <div key={index} className="text-center p-3 bg-primary/10 rounded-md">
+                  <span className="font-medium text-sm">{county}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
           <p className="text-center text-sm text-muted-foreground mt-6">
-            Service available throughout Salt Lake County and surrounding areas
+            On rotation for Utah Highway Patrol (Salt Lake & Weber Counties) and Unified Police Department (Midvale)
           </p>
         </div>
       </div>

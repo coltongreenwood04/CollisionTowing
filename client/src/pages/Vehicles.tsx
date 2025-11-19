@@ -56,10 +56,10 @@ export default function Vehicles() {
             <p className="text-muted-foreground mb-6">
               Check back soon for new inventory, or contact us for upcoming vehicles.
             </p>
-            <a href="tel:801-946-9531" data-testid="link-call-vehicles">
+            <a href="tel:801-946-6531" data-testid="link-call-vehicles">
               <Button className="gap-2">
                 <Phone className="h-4 w-4" />
-                Call Us: 801-946-9531
+                Call Us: 801-946-6531
               </Button>
             </a>
           </Card>
@@ -80,7 +80,7 @@ export default function Vehicles() {
             <p>• In-person inspection recommended before purchase</p>
             <p>• Cash or certified check accepted</p>
             <p className="pt-4 text-center font-medium text-foreground">
-              Contact us at <a href="tel:801-946-9531" className="text-primary hover:underline">801-946-9531</a> for more information
+              Contact us at <a href="tel:801-946-6531" className="text-primary hover:underline">801-946-6531</a> for more information
             </p>
           </div>
         </div>

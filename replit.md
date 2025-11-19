@@ -2,9 +2,11 @@
 
 ## Overview
 
-A modern, conversion-optimized website for Collision Towing, a 24/7 towing and roadside assistance company based in Murray, UT (Yard #10557). The application is built as a full-stack web platform featuring a React frontend with shadcn/ui components and an Express backend, designed to maximize lead generation through quote requests, service scheduling, and direct phone contact.
+A modern, conversion-optimized website for Collision Towing, a 24/7 towing and roadside assistance company serving Northern Utah. Acquired by Rusty Feik in January 2025, the company operates from multiple locations with the main office in Eden, UT, central offices in West Jordan and Ogden, and storage yards in Murray (Yard #10557), West Jordan, and Ogden.
 
-The site emphasizes mobile-first emergency response with prominent call-to-action buttons, professional trust-building elements, and comprehensive service information. Key features include vehicle sales listings, customer testimonials, service galleries, and multiple contact methods.
+The application is built as a full-stack web platform featuring a React frontend with shadcn/ui components and an Express backend, designed to maximize lead generation through quote requests, service scheduling, and direct phone contact (801-946-6531).
+
+The site emphasizes mobile-first emergency response with prominent call-to-action buttons, professional trust-building elements, and comprehensive service information across 9 counties (Weber, Morgan, Salt Lake, Davis, Box Elder, Utah, Tooele, Cache, and Summit). The company is on rotation for Utah Highway Patrol (Salt Lake & Weber counties) and Unified Police Department (Midvale). Key features include vehicle sales listings, customer testimonials, service galleries, and multiple contact methods.
 
 ## User Preferences
 

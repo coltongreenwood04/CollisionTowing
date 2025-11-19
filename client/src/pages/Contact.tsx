@@ -46,8 +46,8 @@ export default function Contact() {
                 <Phone className="h-6 w-6 text-primary" />
               </div>
               <h3 className="font-semibold mb-2">Phone</h3>
-              <a href="tel:801-946-9531" className="text-primary hover:underline text-lg font-medium" data-testid="link-call-contact-card">
-                801-946-9531
+              <a href="tel:801-946-6531" className="text-primary hover:underline text-lg font-medium" data-testid="link-call-contact-card">
+                801-946-6531
               </a>
               <p className="text-sm text-muted-foreground mt-2">24/7 Emergency Service</p>
             </CardContent>
@@ -58,12 +58,13 @@ export default function Contact() {
               <div className="rounded-md bg-primary/10 w-12 h-12 flex items-center justify-center mx-auto mb-4">
                 <MapPin className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="font-semibold mb-2">Address</h3>
-              <p className="text-muted-foreground">
-                5662 S. 300 W.<br />
-                Murray, UT 84107
+              <h3 className="font-semibold mb-2">Offices</h3>
+              <p className="text-muted-foreground text-sm">
+                Main: Eden, Utah<br />
+                Central: West Jordan, UT<br />
+                Ogden Office
               </p>
-              <p className="text-sm text-muted-foreground mt-2">Yard #10557</p>
+              <p className="text-xs text-muted-foreground mt-2">Murray Yard #10557</p>
             </CardContent>
           </Card>
 
