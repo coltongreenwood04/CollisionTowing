@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QuoteButton } from "@/components/QuoteButton";
 import { Truck, Wrench, Shield, Battery, Key, Fuel, Car, AlertCircle, Clock, Zap, Settings, Trophy } from "lucide-react";
 
 export default function Services() {
+  useEffect(() => {
+    document.title = "Towing Services & Pricing | Collision Towing - Northern Utah";
+  }, []);
   const services = [
     {
       icon: Truck,

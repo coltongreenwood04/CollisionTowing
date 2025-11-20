@@ -22,6 +22,8 @@ export default function Contact() {
   const { toast } = useToast();
 
   useEffect(() => {
+    document.title = "Contact Us - Get Quote or Schedule Service | Collision Towing";
+    
     const params = new URLSearchParams(window.location.search);
     const tab = params.get("tab");
     if (tab === "quote" || tab === "schedule") {

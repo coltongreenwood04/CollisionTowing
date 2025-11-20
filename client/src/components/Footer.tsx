@@ -3,7 +3,7 @@ import { Phone, MapPin, Clock, Mail } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-card border-t mt-auto">
+    <footer className="bg-card border-t mt-auto" role="contentinfo">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
@@ -18,7 +18,7 @@ export function Footer() {
 
           <div>
             <h3 className="font-bold text-lg mb-4">Quick Links</h3>
-            <div className="flex flex-col gap-2">
+            <nav aria-label="Footer navigation" className="flex flex-col gap-2">
               <Link href="/services" data-testid="link-footer-services">
                 <span className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Services</span>
               </Link>
@@ -31,7 +31,7 @@ export function Footer() {
               <Link href="/contact" data-testid="link-footer-contact">
                 <span className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Contact</span>
               </Link>
-            </div>
+            </nav>
           </div>
 
           <div>

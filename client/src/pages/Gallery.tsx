@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogHeader } from "@/components/ui/dialog";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import img1 from "@assets/IMG_4997_1763592537277.jpg";
 import img2 from "@assets/IMG_4684_1763592546577.jpg";
 import img3 from "@assets/IMG_5149_1763592564229.jpg";
@@ -13,6 +13,10 @@ import img8 from "@assets/IMG_4992 (1)_1763594005083.jpg";
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    document.title = "Photo Gallery - Fleet & Equipment | Collision Towing";
+  }, []);
 
   const galleryImages = [
     {

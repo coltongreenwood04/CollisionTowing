@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -5,6 +6,9 @@ import { Star } from "lucide-react";
 import { type Testimonial } from "@shared/schema";
 
 export default function Reviews() {
+  useEffect(() => {
+    document.title = "Customer Reviews & Testimonials | Collision Towing";
+  }, []);
   const { data: testimonials, isLoading } = useQuery<Testimonial[]>({
     queryKey: ["/api/testimonials"],
   });
