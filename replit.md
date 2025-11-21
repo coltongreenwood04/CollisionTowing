@@ -14,6 +14,32 @@ The company specializes in handling specialty vehicles including exotic cars, el
 
 Preferred communication style: Simple, everyday language.
 
+## SEO Optimization (2025 Best Practices)
+
+The website has been optimized for local search engine optimization following 2025 best practices:
+
+**Implemented SEO Features:**
+1. **LocalBusiness Schema Markup** (JSON-LD) - Comprehensive structured data with:
+   - AutoRepair type for better categorization
+   - All three locations with geocoordinates (West Jordan #10950, Murray #10557, Ogden #10717)
+   - Service catalog listings
+   - Operating hours and contact information
+   - Service area coverage (9 counties + 6 major cities)
+
+2. **Geo Meta Tags** - Location targeting for Utah
+3. **Open Graph Tags** - Optimized social media sharing
+4. **robots.txt** - Search engine crawling instructions
+5. **sitemap.xml** - Complete site structure for indexing
+6. **Local Keywords** - Integrated "towing Utah", "tow truck near me", "24/7 towing Utah" throughout content
+
+**Next Steps for Maximum SEO Impact:**
+- Publish the site to get indexed by Google
+- Create Google Business Profile and verify all 3 locations
+- Start collecting customer reviews on Google
+- Submit sitemap to Google Search Console
+- Build local citations (Yelp, Yellow Pages, local directories)
+- Create location-specific landing pages for each city served
+
 ## System Architecture
 
 ### Frontend Architecture
