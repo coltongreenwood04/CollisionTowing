@@ -8,8 +8,10 @@ import {
   insertQuoteRequestSchema,
   insertSchedulingRequestSchema,
   insertContactMessageSchema,
-  insertVehicleOfferSchema
+  insertVehicleOfferSchema,
+  insertGalleryImageSchema
 } from "@shared/schema";
+import { ObjectStorageService, ObjectNotFoundError } from "./objectStorage";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/services", async (req, res) => {
@@ -191,6 +193,76 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(offers);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch vehicle offers" });
+    }
+  });
+
+  app.get("/api/gallery-images", async (req, res) => {
+    try {
+      const images = await storage.getGalleryImages();
+      res.json(images);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch gallery images" });
+    }
+  });
+
+  app.post("/api/gallery-images/upload-url", async (req, res) => {
+    try {
+      const objectStorageService = new ObjectStorageService();
+      const uploadURL = await objectStorageService.getObjectEntityUploadURL();
+      res.json({ uploadURL });
+    } catch (error) {
+      console.error("Error getting upload URL:", error);
+      res.status(500).json({ error: "Failed to get upload URL" });
+    }
+  });
+
+  app.post("/api/gallery-images", async (req, res) => {
+    try {
+      const { imageUrl, title, category, displayOrder } = req.body;
+      if (!imageUrl) {
+        return res.status(400).json({ error: "imageUrl is required" });
+      }
+
+      const objectStorageService = new ObjectStorageService();
+      const normalizedPath = objectStorageService.normalizeObjectEntityPath(imageUrl);
+
+      const validated = insertGalleryImageSchema.parse({
+        imageUrl: normalizedPath,
+        title: title || "Gallery Image",
+        category: category || "general",
+        displayOrder: displayOrder || 0,
+      });
+
+      const image = await storage.createGalleryImage(validated);
+      res.status(201).json(image);
+    } catch (error) {
+      console.error("Error creating gallery image:", error);
+      res.status(400).json({ error: "Invalid gallery image data" });
+    }
+  });
+
+  app.delete("/api/gallery-images/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      await storage.deleteGalleryImage(id);
+      res.status(204).send();
+    } catch (error) {
+      console.error("Error deleting gallery image:", error);
+      res.status(500).json({ error: "Failed to delete gallery image" });
+    }
+  });
+
+  app.get("/objects/:objectPath(*)", async (req, res) => {
+    const objectStorageService = new ObjectStorageService();
+    try {
+      const objectFile = await objectStorageService.getObjectEntityFile(req.path);
+      objectStorageService.downloadObject(objectFile, res);
+    } catch (error) {
+      console.error("Error serving object:", error);
+      if (error instanceof ObjectNotFoundError) {
+        return res.sendStatus(404);
+      }
+      return res.sendStatus(500);
     }
   });
 

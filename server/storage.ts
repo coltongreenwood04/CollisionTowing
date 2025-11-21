@@ -13,13 +13,16 @@ import {
   type InsertContactMessage,
   type VehicleOffer,
   type InsertVehicleOffer,
+  type GalleryImage,
+  type InsertGalleryImage,
   services,
   vehicles,
   testimonials,
   quoteRequests,
   schedulingRequests,
   contactMessages,
-  vehicleOffers
+  vehicleOffers,
+  galleryImages
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc } from "drizzle-orm";
@@ -46,6 +49,10 @@ export interface IStorage {
   
   createVehicleOffer(offer: InsertVehicleOffer): Promise<VehicleOffer>;
   getVehicleOffers(): Promise<VehicleOffer[]>;
+  
+  getGalleryImages(): Promise<GalleryImage[]>;
+  createGalleryImage(image: InsertGalleryImage): Promise<GalleryImage>;
+  deleteGalleryImage(id: number): Promise<void>;
 }
 
 export class DbStorage implements IStorage {
@@ -115,6 +122,19 @@ export class DbStorage implements IStorage {
 
   async getVehicleOffers(): Promise<VehicleOffer[]> {
     return await db.select().from(vehicleOffers).orderBy(desc(vehicleOffers.createdAt));
+  }
+
+  async getGalleryImages(): Promise<GalleryImage[]> {
+    return await db.select().from(galleryImages).orderBy(desc(galleryImages.displayOrder), desc(galleryImages.createdAt));
+  }
+
+  async createGalleryImage(insertImage: InsertGalleryImage): Promise<GalleryImage> {
+    const [image] = await db.insert(galleryImages).values(insertImage).returning();
+    return image;
+  }
+
+  async deleteGalleryImage(id: number): Promise<void> {
+    await db.delete(galleryImages).where(eq(galleryImages.id, id));
   }
 }
 
