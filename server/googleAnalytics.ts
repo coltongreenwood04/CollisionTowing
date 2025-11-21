@@ -18,24 +18,37 @@ export class GoogleAnalyticsService {
   constructor() {
     this.propertyId = process.env.GA_PROPERTY_ID || '';
     
+    console.log('[GA Debug] Property ID:', this.propertyId ? 'SET' : 'NOT SET');
+    console.log('[GA Debug] Credentials JSON:', process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON ? 'EXISTS' : 'NOT SET');
+    
     if (process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {
       try {
         const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON);
+        console.log('[GA Debug] Parsed credentials successfully');
+        console.log('[GA Debug] Service account email:', credentials.client_email);
         this.client = new BetaAnalyticsDataClient({
           credentials: credentials,
         });
+        console.log('[GA Debug] Client initialized successfully');
       } catch (error) {
-        console.error('Failed to initialize Google Analytics client:', error);
+        console.error('[GA Error] Failed to initialize Google Analytics client:', error);
       }
+    } else {
+      console.log('[GA Debug] No credentials found in environment');
     }
   }
 
   async getAnalyticsData(dateRange: string = '30daysAgo'): Promise<AnalyticsData | null> {
+    console.log('[GA API] getAnalyticsData called');
+    console.log('[GA API] Client exists:', !!this.client);
+    console.log('[GA API] Property ID:', this.propertyId);
+    
     if (!this.client || !this.propertyId) {
-      console.log('Google Analytics not configured. Missing credentials or property ID.');
+      console.log('[GA API] Not configured - client:', !!this.client, 'propertyId:', this.propertyId);
       return null;
     }
 
+    console.log('[GA API] Making API call to Google Analytics...');
     try {
       const [aggregateResponse] = await this.client.runReport({
         property: `properties/${this.propertyId}`,
