@@ -96,10 +96,11 @@ export default function Services() {
     {
       icon: Car,
       title: "Impound & Storage",
-      description: "Secure vehicle storage with 24/7 access coordination at our Murray yard location.",
+      description: "Secure vehicle storage with 24/7 access coordination at our central yard locations.",
       features: [
         "Secure storage yards",
-        "Murray Yard #10557",
+        "West Jordan Yard #10950",
+        "Ogden Yard #10557",
         "Vehicle release coordination",
         "Insurance claims assistance"
       ],
@@ -118,6 +119,11 @@ export default function Services() {
           <div className="flex items-center justify-center gap-2 mt-6">
             <Clock className="h-5 w-5 text-primary" />
             <span className="font-semibold text-lg">24/7 Emergency Service Available</span>
+          </div>
+          <div className="mt-6 bg-primary/5 border border-primary/20 rounded-lg p-4 max-w-2xl mx-auto">
+            <p className="text-sm text-muted-foreground">
+              <span className="font-semibold text-foreground">Minimum charge may apply:</span> Some services have a minimum $125 charge. Call for specific pricing details.
+            </p>
           </div>
         </div>
 
@@ -222,8 +228,8 @@ export default function Services() {
             </div>
             
             <div className="text-center mb-6">
-              <div className="font-semibold mb-2">Storage Yards</div>
-              <div className="text-sm text-muted-foreground">Murray (Yard #10557) • West Jordan • Ogden</div>
+              <div className="font-semibold mb-2">Central Yards</div>
+              <div className="text-sm text-muted-foreground">West Jordan (Yard #10950) • Ogden (Yard #10557)</div>
             </div>
           </div>
 

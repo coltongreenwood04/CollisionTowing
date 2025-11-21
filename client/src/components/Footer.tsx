@@ -12,7 +12,7 @@ export function Footer() {
               Professional towing and roadside assistance serving Northern Utah. Licensed, insured, and ready to help 24/7.
             </p>
             <p className="text-sm text-muted-foreground">
-              Murray Yard #10557
+              Serving 9 counties across Northern Utah
             </p>
           </div>
 
@@ -58,10 +58,11 @@ export function Footer() {
                 <div className="text-sm text-muted-foreground">
                   <div className="font-medium text-foreground">Main Office:</div>
                   <div>Eden, Utah</div>
-                  <div className="mt-2 font-medium text-foreground">Central Offices:</div>
-                  <div>West Jordan • Ogden</div>
-                  <div className="mt-2 font-medium text-foreground">Storage Yards:</div>
-                  <div>Murray (#10557) • West Jordan • Ogden</div>
+                  <div className="mt-2 font-medium text-foreground">Central Yards:</div>
+                  <div className="font-medium text-foreground mt-1">West Jordan (Yard #10950):</div>
+                  <div>8415 S 4300 W, West Jordan, UT</div>
+                  <div className="font-medium text-foreground mt-1">Ogden (Yard #10557):</div>
+                  <div>3275 Wall Ave, Ogden, UT 84401</div>
                 </div>
               </div>
               <div className="flex items-start gap-2">

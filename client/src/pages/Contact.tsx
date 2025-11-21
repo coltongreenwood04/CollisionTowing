@@ -76,10 +76,9 @@ export default function Contact() {
               <h3 className="font-semibold mb-2">Offices</h3>
               <p className="text-muted-foreground text-sm">
                 Main: Eden, Utah<br />
-                Central: West Jordan, UT<br />
-                Ogden Office
+                West Jordan Yard #10950<br />
+                Ogden Yard #10557
               </p>
-              <p className="text-xs text-muted-foreground mt-2">Murray Yard #10557</p>
             </CardContent>
           </Card>
 
