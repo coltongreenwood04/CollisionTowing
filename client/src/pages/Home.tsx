@@ -9,7 +9,7 @@ import heroImageUrl from "@assets/IMG_4684_1763592546577.jpg";
 
 export default function Home() {
   useEffect(() => {
-    document.title = "Collision Towing - 24/7 Professional Towing Services | Northern Utah";
+    document.title = "Towing Service in Utah - 24/7 Emergency Towing | Collision Towing";
   }, []);
   const services = [
     {
@@ -56,10 +56,10 @@ export default function Home() {
             24/7 Emergency Service
           </Badge>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg">
-            Fast, Reliable Towing
+            #1 Towing Service in Utah
           </h1>
           <p className="text-xl sm:text-2xl mb-8 max-w-2xl mx-auto text-gray-100">
-            Professional towing and roadside assistance serving Northern Utah
+            Professional 24/7 towing service in Utah - Fast response across Northern Utah
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href="tel:801-946-6531" data-testid="link-call-hero">
@@ -119,6 +119,36 @@ export default function Home() {
                 View All Services
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-center">Your Trusted Towing Service in Utah</h2>
+            <div className="prose prose-lg max-w-none text-muted-foreground">
+              <p className="text-lg mb-4">
+                When you need a reliable <strong>towing service in Utah</strong>, Collision Towing is your go-to provider for fast, professional assistance. 
+                We serve Northern Utah including West Jordan, Ogden, Salt Lake City, Murray, Layton, and surrounding areas across 9 counties.
+              </p>
+              <p className="text-lg mb-4">
+                Our <strong>24/7 emergency towing service in Utah</strong> means you're never stranded. Whether it's a breakdown on I-15, an accident on I-80, 
+                or you need specialty towing for exotic cars and electric vehicles, our experienced team responds quickly with modern flatbed tow trucks.
+              </p>
+              <p className="text-lg">
+                As a licensed and insured <strong>towing company in Utah</strong>, we're on rotation with Utah Highway Patrol and Unified Police Department. 
+                Trust us for professional roadside assistance, accident recovery, and safe vehicle transport throughout Northern Utah.
+              </p>
+            </div>
+            <div className="text-center mt-8">
+              <a href="tel:801-946-6531" data-testid="link-call-content">
+                <Button size="lg" className="gap-2">
+                  <Phone className="h-5 w-5" />
+                  Call for Immediate Towing: 801-946-6531
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </section>
