@@ -4,14 +4,38 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { BarChart, Upload, LogOut, Eye, Phone, Mail, Calendar } from "lucide-react";
+import { BarChart, Upload, LogOut, Eye, Phone, Mail, Calendar, Trash2, X } from "lucide-react";
 import { useLocation } from "wouter";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { queryClient, apiRequest } from "@/lib/queryClient";
+import type { GalleryImage } from "@shared/schema";
 
 export default function Admin() {
   const [, setLocation] = useLocation();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
+  const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [uploadPreview, setUploadPreview] = useState<string | null>(null);
+  const [imageTitle, setImageTitle] = useState("");
+  const [imageCategory, setImageCategory] = useState("fleet");
+  const [isUploading, setIsUploading] = useState(false);
   const { toast } = useToast();
+
+  const { data: galleryImages } = useQuery<GalleryImage[]>({
+    queryKey: ["/api/gallery-images"],
+    enabled: isAuthenticated,
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: (id: number) => apiRequest("DELETE", `/api/gallery-images/${id}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/gallery-images"] });
+      toast({
+        title: "Success",
+        description: "Image deleted successfully",
+      });
+    },
+  });
 
   useEffect(() => {
     document.title = "Admin Dashboard | Collision Towing";
@@ -48,6 +72,87 @@ export default function Admin() {
       description: "Successfully logged out of admin dashboard.",
     });
     setLocation("/");
+  };
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (!file.type.startsWith("image/")) {
+        toast({
+          title: "Error",
+          description: "Please select an image file",
+          variant: "destructive",
+        });
+        return;
+      }
+      setUploadFile(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setUploadPreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleUpload = async () => {
+    if (!uploadFile) {
+      toast({
+        title: "Error",
+        description: "Please select an image first",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsUploading(true);
+    try {
+      const urlResponse = await fetch("/api/gallery-images/upload-url", {
+        method: "POST",
+      });
+      const { uploadURL } = await urlResponse.json();
+
+      const uploadResponse = await fetch(uploadURL, {
+        method: "PUT",
+        body: uploadFile,
+        headers: {
+          "Content-Type": uploadFile.type,
+        },
+      });
+
+      if (!uploadResponse.ok) {
+        throw new Error("Upload failed");
+      }
+
+      const createResponse = await apiRequest("POST", "/api/gallery-images", {
+        imageUrl: uploadURL,
+        title: imageTitle || "Gallery Image",
+        category: imageCategory,
+        displayOrder: 0,
+      });
+
+      const savedImage = await createResponse.json();
+
+      queryClient.invalidateQueries({ queryKey: ["/api/gallery-images"] });
+
+      toast({
+        title: "Success",
+        description: "Image uploaded successfully!",
+      });
+
+      setUploadFile(null);
+      setUploadPreview(null);
+      setImageTitle("");
+      setImageCategory("fleet");
+    } catch (error) {
+      console.error("Upload error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to upload image. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   if (!isAuthenticated) {
@@ -193,18 +298,110 @@ export default function Admin() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground mb-4">
-                Add new photos to your gallery to showcase your fleet and services.
-              </p>
-              <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 text-center">
-                <Upload className="h-12 w-12 text-primary mx-auto mb-3" />
-                <p className="font-medium mb-2">Image Upload Coming Soon</p>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Photo upload functionality will be available in a future update.
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  For now, contact your developer to add new gallery images.
-                </p>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="image-upload">Upload New Image</Label>
+                  <Input
+                    id="image-upload"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileSelect}
+                    disabled={isUploading}
+                    data-testid="input-image-upload"
+                  />
+                </div>
+
+                {uploadPreview && (
+                  <div className="relative">
+                    <img
+                      src={uploadPreview}
+                      alt="Preview"
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+                    <Button
+                      variant="destructive"
+                      size="icon"
+                      className="absolute top-2 right-2"
+                      onClick={() => {
+                        setUploadFile(null);
+                        setUploadPreview(null);
+                      }}
+                      data-testid="button-remove-preview"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                )}
+
+                {uploadFile && (
+                  <div className="space-y-3">
+                    <div className="space-y-2">
+                      <Label htmlFor="image-title">Image Title</Label>
+                      <Input
+                        id="image-title"
+                        value={imageTitle}
+                        onChange={(e) => setImageTitle(e.target.value)}
+                        placeholder="e.g., Flatbed Tow Truck"
+                        data-testid="input-image-title"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="image-category">Category</Label>
+                      <select
+                        id="image-category"
+                        value={imageCategory}
+                        onChange={(e) => setImageCategory(e.target.value)}
+                        className="w-full px-3 py-2 border rounded-md"
+                        data-testid="select-image-category"
+                      >
+                        <option value="fleet">Fleet & Equipment</option>
+                        <option value="services">Services</option>
+                        <option value="work">Work in Progress</option>
+                        <option value="general">General</option>
+                      </select>
+                    </div>
+
+                    <Button
+                      onClick={handleUpload}
+                      disabled={isUploading}
+                      className="w-full"
+                      data-testid="button-upload-image"
+                    >
+                      {isUploading ? "Uploading..." : "Upload Image"}
+                    </Button>
+                  </div>
+                )}
+
+                {galleryImages && galleryImages.length > 0 && (
+                  <div className="mt-6 space-y-2">
+                    <h3 className="font-semibold">Uploaded Images ({galleryImages.length})</h3>
+                    <div className="grid grid-cols-2 gap-2 max-h-64 overflow-y-auto">
+                      {galleryImages.map((image) => (
+                        <div key={image.id} className="relative group">
+                          <img
+                            src={image.imageUrl}
+                            alt={image.title}
+                            className="w-full h-24 object-cover rounded-md"
+                            data-testid={`img-gallery-${image.id}`}
+                          />
+                          <Button
+                            variant="destructive"
+                            size="icon"
+                            className="absolute top-1 right-1 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                            onClick={() => deleteMutation.mutate(image.id)}
+                            data-testid={`button-delete-${image.id}`}
+                          >
+                            <Trash2 className="h-3 w-3" />
+                          </Button>
+                          <div className="absolute bottom-0 left-0 right-0 bg-black/70 px-2 py-1 text-xs text-white truncate">
+                            {image.title}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>

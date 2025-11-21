@@ -2,6 +2,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogHeader } from "@/components/ui/dialog";
 import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import type { GalleryImage } from "@shared/schema";
 import img1 from "@assets/IMG_4997_1763592537277.jpg";
 import img2 from "@assets/IMG_4684_1763592546577.jpg";
 import img3 from "@assets/IMG_5149_1763592564229.jpg";
@@ -18,7 +20,11 @@ export default function Gallery() {
     document.title = "Photo Gallery - Fleet & Equipment | Collision Towing";
   }, []);
 
-  const galleryImages = [
+  const { data: dbImages } = useQuery<GalleryImage[]>({
+    queryKey: ["/api/gallery-images"],
+  });
+
+  const defaultImages = [
     {
       src: img1,
       title: "Ford F-550 Tow Truck",
@@ -60,6 +66,16 @@ export default function Gallery() {
       category: "Specialty Towing"
     }
   ];
+
+  const uploadedImages = dbImages?.map(img => ({
+    src: img.imageUrl,
+    title: img.title,
+    category: img.category,
+  })) || [];
+
+  const galleryImages = uploadedImages.length > 0 
+    ? [...uploadedImages, ...defaultImages]
+    : defaultImages;
 
   return (
     <div className="min-h-screen py-12">
