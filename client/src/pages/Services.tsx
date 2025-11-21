@@ -229,8 +229,8 @@ export default function Services() {
             </div>
             
             <div className="text-center mb-6">
-              <div className="font-semibold mb-2">Central Offices</div>
-              <div className="text-sm text-muted-foreground">West Jordan (Yard #10950) • Murray (Yard #10557) • Ogden (Yard #10717)</div>
+              <div className="font-semibold mb-2">Storage Yards</div>
+              <div className="text-sm text-muted-foreground">West Jordan #10950 • Murray #10557 • Ogden #10717</div>
             </div>
           </div>
 

@@ -35,7 +35,7 @@ export default function Home() {
   const trustBadges = [
     { icon: Shield, text: "Licensed & Insured" },
     { icon: Clock, text: "24/7 Available" },
-    { icon: Star, text: "Central Offices" },
+    { icon: Star, text: "Multiple Locations" },
   ];
 
   return (
@@ -195,8 +195,8 @@ export default function Home() {
                     <div className="font-semibold mb-1">Locations</div>
                     <div className="text-muted-foreground">
                       Main Office: Eden, UT<br />
-                      Central Offices:<br />
-                      West Jordan (Yard #10950) • Murray (Yard #10557) • Ogden (Yard #10717)
+                      Offices: West Jordan, Ogden<br />
+                      Yards: West Jordan #10950 • Murray #10557 • Ogden #10717
                     </div>
                   </div>
                 </div>
