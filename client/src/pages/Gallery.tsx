@@ -71,11 +71,17 @@ export default function Gallery() {
     src: img.imageUrl,
     title: img.title,
     category: img.category,
+    isUploaded: true,
   })) || [];
 
+  const defaultImagesWithFlag = defaultImages.map(img => ({
+    ...img,
+    isUploaded: false,
+  }));
+
   const galleryImages = uploadedImages.length > 0 
-    ? [...uploadedImages, ...defaultImages]
-    : defaultImages;
+    ? [...uploadedImages, ...defaultImagesWithFlag]
+    : defaultImagesWithFlag;
 
   return (
     <div className="min-h-screen py-12">
@@ -104,7 +110,12 @@ export default function Gallery() {
                     />
                   </div>
                   <div className="p-4">
-                    <h3 className="font-semibold mb-2">{image.title}</h3>
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-semibold">{image.title}</h3>
+                      {image.isUploaded && (
+                        <Badge variant="default" className="text-xs">Recently Added</Badge>
+                      )}
+                    </div>
                     <Badge variant="secondary">{image.category}</Badge>
                   </div>
                 </Card>
