@@ -37,7 +37,28 @@ export class GoogleAnalyticsService {
     }
 
     try {
-      const [response] = await this.client.runReport({
+      const [aggregateResponse] = await this.client.runReport({
+        property: `properties/${this.propertyId}`,
+        dateRanges: [
+          {
+            startDate: dateRange,
+            endDate: 'today',
+          },
+        ],
+        metrics: [
+          { name: 'screenPageViews' },
+          { name: 'activeUsers' },
+          { name: 'newUsers' },
+          { name: 'sessions' },
+        ],
+      });
+
+      const totalPageViews = parseInt(aggregateResponse.rows?.[0]?.metricValues?.[0]?.value || '0');
+      const totalActiveUsers = parseInt(aggregateResponse.rows?.[0]?.metricValues?.[1]?.value || '0');
+      const totalNewUsers = parseInt(aggregateResponse.rows?.[0]?.metricValues?.[2]?.value || '0');
+      const totalSessions = parseInt(aggregateResponse.rows?.[0]?.metricValues?.[3]?.value || '0');
+
+      const [topPagesResponse] = await this.client.runReport({
         property: `properties/${this.propertyId}`,
         dateRanges: [
           {
@@ -46,12 +67,7 @@ export class GoogleAnalyticsService {
           },
         ],
         dimensions: [{ name: 'pagePath' }],
-        metrics: [
-          { name: 'screenPageViews' },
-          { name: 'activeUsers' },
-          { name: 'newUsers' },
-          { name: 'sessions' },
-        ],
+        metrics: [{ name: 'screenPageViews' }],
         orderBys: [
           {
             metric: {
@@ -60,31 +76,15 @@ export class GoogleAnalyticsService {
             desc: true,
           },
         ],
-        limit: 10,
+        limit: 5,
       });
 
-      let totalPageViews = 0;
-      let totalActiveUsers = 0;
-      let totalNewUsers = 0;
-      let totalSessions = 0;
       const topPages: Array<{ path: string; views: number }> = [];
-
-      if (response.rows) {
-        for (const row of response.rows) {
+      if (topPagesResponse.rows) {
+        for (const row of topPagesResponse.rows) {
           const pagePath = row.dimensionValues?.[0]?.value || '';
           const pageViews = parseInt(row.metricValues?.[0]?.value || '0');
-          const activeUsers = parseInt(row.metricValues?.[1]?.value || '0');
-          const newUsers = parseInt(row.metricValues?.[2]?.value || '0');
-          const sessions = parseInt(row.metricValues?.[3]?.value || '0');
-
-          totalPageViews += pageViews;
-          totalActiveUsers += activeUsers;
-          totalNewUsers += newUsers;
-          totalSessions += sessions;
-
-          if (topPages.length < 5) {
-            topPages.push({ path: pagePath, views: pageViews });
-          }
+          topPages.push({ path: pagePath, views: pageViews });
         }
       }
 
