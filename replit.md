@@ -42,9 +42,10 @@ Preferred communication style: Simple, everyday language.
 **Page Structure:**
 - Home: Hero section with emergency service CTA, service overview, trust badges
 - Services: Detailed service listings with features and pricing, specialty vehicle handling section
-- Gallery: Image showcase of equipment and work (8 photos)
+- Gallery: Dynamic image showcase loading from database, with fallback to default images
 - Reviews: Customer testimonials with star ratings
 - Contact: Multi-tab contact forms (general contact, quote requests, scheduling)
+- Admin: Password-protected dashboard for analytics and gallery management
 
 **Key Components:**
 - Header: Sticky navigation with logo, menu, and prominent phone CTA
@@ -110,15 +111,49 @@ Defined in shared/schema.ts for PostgreSQL with the following tables:
 7. **vehicleOffers**: Vehicle purchase inquiries
    - Fields: id, vehicleId, name, phone, email, offerAmount, message, createdAt, status
 
+8. **gallery_images**: Gallery photo management
+   - Fields: id, title, category, imageUrl, displayOrder, createdAt
+   - Stores permanent object storage paths for uploaded images
+   - Categories: fleet, work-in-progress, facilities, specialty
+   - Admin-managed via upload interface
+
 **Migration Strategy:**
 - Drizzle Kit configured for PostgreSQL migrations
 - Migration output directory: ./migrations
 - Database connection via DATABASE_URL environment variable
 - Ready for Neon serverless PostgreSQL integration
 
+### Object Storage
+
+**Replit Object Storage Integration:**
+- Bucket: repl-default-bucket-eb76087a-07eb-407d-a74e-6e9eff6c85ee
+- Bucket ID: replit-objstore-61f394a8-ee1c-483e-bd18-5c67ece308c5
+- Image upload flow using presigned URLs
+- Permanent object paths stored as `/objects/uploads/{uuid}`
+- Admin gallery management with file upload, preview, and deletion
+- Categories: Fleet & Equipment, Work in Progress, Facilities, Specialty Vehicles
+
+**Environment Variables:**
+- DEFAULT_OBJECT_STORAGE_BUCKET_ID: Object storage bucket identifier
+- PUBLIC_OBJECT_SEARCH_PATHS: Public asset directories
+- PRIVATE_OBJECT_DIR: Private uploads directory path
+
+**Implementation:**
+- server/objectStorage.ts: Service wrapper for @google-cloud/storage
+- Presigned URL generation for secure uploads
+- Path normalization for permanent storage references
+- Integration with gallery_images database table
+
 ### Authentication and Authorization
 
-Not currently implemented. All endpoints are publicly accessible. Future implementation would require session management (connect-pg-simple package included for PostgreSQL sessions).
+**Admin Dashboard:**
+- Client-side password protection (password: "collision2025")
+- Uses localStorage key "collision_admin_auth" for session persistence
+- Access to analytics dashboard and gallery management
+- Note: Basic security for internal use, not production-grade authentication
+
+**Public Endpoints:**
+All API endpoints are publicly accessible for form submissions and data retrieval. Future implementation would require session management (connect-pg-simple package included for PostgreSQL sessions).
 
 ### External Dependencies
 
@@ -129,7 +164,13 @@ Not currently implemented. All endpoints are publicly accessible. Future impleme
    - Event tracking utilities for conversions
    - Initialization in App.tsx
 
-2. **Google Fonts**: Web typography
+2. **Replit Object Storage**: Cloud storage for gallery images
+   - Google Cloud Storage backend via @google-cloud/storage
+   - Presigned URL upload flow for secure file transfers
+   - Permanent object path storage for reliable image serving
+   - Admin-managed gallery with upload, preview, and deletion
+
+3. **Google Fonts**: Web typography
    - Inter font family with multiple weights (300-800)
    - Preconnect optimization for performance
 
