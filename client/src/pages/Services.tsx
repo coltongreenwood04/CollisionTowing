@@ -96,11 +96,12 @@ export default function Services() {
     {
       icon: Car,
       title: "Impound & Storage",
-      description: "Secure vehicle storage with 24/7 access coordination at our central yard locations.",
+      description: "Secure vehicle storage with 24/7 access coordination at our central office yard locations.",
       features: [
         "Secure storage yards",
         "West Jordan Yard #10950",
-        "Ogden Yard #10557",
+        "Murray Yard #10557",
+        "Ogden Yard #10717",
         "Vehicle release coordination",
         "Insurance claims assistance"
       ],
@@ -228,8 +229,8 @@ export default function Services() {
             </div>
             
             <div className="text-center mb-6">
-              <div className="font-semibold mb-2">Central Yards</div>
-              <div className="text-sm text-muted-foreground">West Jordan (Yard #10950) • Ogden (Yard #10557)</div>
+              <div className="font-semibold mb-2">Central Offices</div>
+              <div className="text-sm text-muted-foreground">West Jordan (Yard #10950) • Murray (Yard #10557) • Ogden (Yard #10717)</div>
             </div>
           </div>
 

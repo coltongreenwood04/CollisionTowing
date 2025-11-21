@@ -58,10 +58,12 @@ export function Footer() {
                 <div className="text-sm text-muted-foreground">
                   <div className="font-medium text-foreground">Main Office:</div>
                   <div>Eden, Utah</div>
-                  <div className="mt-2 font-medium text-foreground">Central Yards:</div>
+                  <div className="mt-2 font-medium text-foreground">Central Offices:</div>
                   <div className="font-medium text-foreground mt-1">West Jordan (Yard #10950):</div>
                   <div>8415 S 4300 W, West Jordan, UT</div>
-                  <div className="font-medium text-foreground mt-1">Ogden (Yard #10557):</div>
+                  <div className="font-medium text-foreground mt-1">Murray (Yard #10557):</div>
+                  <div>TBD</div>
+                  <div className="font-medium text-foreground mt-1">Ogden (Yard #10717):</div>
                   <div>3275 Wall Ave, Ogden, UT 84401</div>
                 </div>
               </div>

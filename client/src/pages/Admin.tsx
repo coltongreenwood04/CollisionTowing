@@ -479,7 +479,7 @@ export default function Admin() {
             <div className="space-y-3">
               <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
                 <span className="text-sm font-medium">Yard Locations</span>
-                <span className="text-sm text-muted-foreground">West Jordan (#10950) • Ogden (#10557)</span>
+                <span className="text-sm text-muted-foreground">West Jordan (#10950) • Murray (#10557) • Ogden (#10717)</span>
               </div>
               <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
                 <span className="text-sm font-medium">Service Counties</span>
