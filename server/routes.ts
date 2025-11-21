@@ -12,6 +12,7 @@ import {
   insertGalleryImageSchema
 } from "@shared/schema";
 import { ObjectStorageService, ObjectNotFoundError } from "./objectStorage";
+import { analyticsService } from "./googleAnalytics";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/services", async (req, res) => {
@@ -263,6 +264,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.sendStatus(404);
       }
       return res.sendStatus(500);
+    }
+  });
+
+  app.get("/api/analytics", async (req, res) => {
+    try {
+      const dateRange = req.query.dateRange as string || '30daysAgo';
+      const data = await analyticsService.getAnalyticsData(dateRange);
+      
+      if (data === null) {
+        return res.status(200).json({
+          configured: false,
+          message: "Google Analytics not configured"
+        });
+      }
+      
+      res.json({
+        configured: true,
+        data
+      });
+    } catch (error) {
+      console.error("Error fetching analytics:", error);
+      res.status(500).json({ error: "Failed to fetch analytics data" });
     }
   });
 

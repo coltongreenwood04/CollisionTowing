@@ -26,6 +26,22 @@ export default function Admin() {
     enabled: isAuthenticated,
   });
 
+  const { data: analyticsData } = useQuery<{
+    configured: boolean;
+    data?: {
+      pageViews: number;
+      activeUsers: number;
+      newUsers: number;
+      sessions: number;
+      topPages: Array<{ path: string; views: number }>;
+    };
+    message?: string;
+  }>({
+    queryKey: ["/api/analytics"],
+    enabled: isAuthenticated,
+    refetchInterval: 60000,
+  });
+
   const deleteMutation = useMutation({
     mutationFn: (id: number) => apiRequest("DELETE", `/api/gallery-images/${id}`),
     onSuccess: () => {
@@ -205,8 +221,12 @@ export default function Admin() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Page Views</p>
-                  <p className="text-2xl font-bold">-</p>
-                  <p className="text-xs text-muted-foreground">Connect GA for data</p>
+                  <p className="text-2xl font-bold" data-testid="text-page-views">
+                    {analyticsData?.configured && analyticsData.data
+                      ? analyticsData.data.pageViews.toLocaleString()
+                      : "-"}
+                  </p>
+                  <p className="text-xs text-muted-foreground">Last 30 days</p>
                 </div>
               </div>
             </CardContent>
@@ -219,9 +239,13 @@ export default function Admin() {
                   <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Contact Forms</p>
-                  <p className="text-2xl font-bold">-</p>
-                  <p className="text-xs text-muted-foreground">This month</p>
+                  <p className="text-sm text-muted-foreground">Active Users</p>
+                  <p className="text-2xl font-bold" data-testid="text-active-users">
+                    {analyticsData?.configured && analyticsData.data
+                      ? analyticsData.data.activeUsers.toLocaleString()
+                      : "-"}
+                  </p>
+                  <p className="text-xs text-muted-foreground">Last 30 days</p>
                 </div>
               </div>
             </CardContent>
@@ -234,9 +258,13 @@ export default function Admin() {
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Quote Requests</p>
-                  <p className="text-2xl font-bold">-</p>
-                  <p className="text-xs text-muted-foreground">This month</p>
+                  <p className="text-sm text-muted-foreground">New Users</p>
+                  <p className="text-2xl font-bold" data-testid="text-new-users">
+                    {analyticsData?.configured && analyticsData.data
+                      ? analyticsData.data.newUsers.toLocaleString()
+                      : "-"}
+                  </p>
+                  <p className="text-xs text-muted-foreground">Last 30 days</p>
                 </div>
               </div>
             </CardContent>
@@ -249,9 +277,13 @@ export default function Admin() {
                   <Calendar className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Scheduling</p>
-                  <p className="text-2xl font-bold">-</p>
-                  <p className="text-xs text-muted-foreground">This month</p>
+                  <p className="text-sm text-muted-foreground">Sessions</p>
+                  <p className="text-2xl font-bold" data-testid="text-sessions">
+                    {analyticsData?.configured && analyticsData.data
+                      ? analyticsData.data.sessions.toLocaleString()
+                      : "-"}
+                  </p>
+                  <p className="text-xs text-muted-foreground">Last 30 days</p>
                 </div>
               </div>
             </CardContent>
@@ -267,26 +299,58 @@ export default function Admin() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground mb-4">
-                Your Google Analytics tracking is already set up and collecting data.
-              </p>
-              <div className="bg-muted/50 rounded-lg p-4 mb-4">
-                <p className="text-sm font-medium mb-2">Measurement ID:</p>
-                <code className="text-xs bg-background px-2 py-1 rounded">
-                  {import.meta.env.VITE_GA_MEASUREMENT_ID || "Not configured"}
-                </code>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                View detailed analytics in your{" "}
-                <a
-                  href="https://analytics.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  Google Analytics dashboard
-                </a>
-              </p>
+              {analyticsData?.configured ? (
+                <div className="space-y-4">
+                  <p className="text-muted-foreground">
+                    Analytics API is configured and pulling live data from your Google Analytics property.
+                  </p>
+                  <div className="bg-muted/50 rounded-lg p-4">
+                    <p className="text-sm font-medium mb-2">Measurement ID:</p>
+                    <code className="text-xs bg-background px-2 py-1 rounded">
+                      {import.meta.env.VITE_GA_MEASUREMENT_ID || "Not configured"}
+                    </code>
+                  </div>
+                  {analyticsData.data?.topPages && analyticsData.data.topPages.length > 0 && (
+                    <div>
+                      <p className="text-sm font-medium mb-2">Top Pages (Last 30 days):</p>
+                      <div className="space-y-2">
+                        {analyticsData.data.topPages.map((page, idx) => (
+                          <div key={idx} className="flex items-center justify-between text-sm">
+                            <span className="text-muted-foreground truncate flex-1">{page.path}</span>
+                            <span className="font-medium ml-2">{page.views.toLocaleString()}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <p className="text-muted-foreground">
+                    Website tracking is active, but the Analytics API is not configured yet.
+                  </p>
+                  <div className="bg-muted/50 rounded-lg p-4">
+                    <p className="text-sm font-medium mb-2">Measurement ID:</p>
+                    <code className="text-xs bg-background px-2 py-1 rounded">
+                      {import.meta.env.VITE_GA_MEASUREMENT_ID || "Not configured"}
+                    </code>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    To see live analytics data here, you need to set up the Google Analytics Reporting API with a service account.
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    View detailed analytics at{" "}
+                    <a
+                      href="https://analytics.google.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline"
+                    >
+                      analytics.google.com
+                    </a>
+                  </p>
+                </div>
+              )}
             </CardContent>
           </Card>
 
